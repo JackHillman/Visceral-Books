@@ -3,27 +3,126 @@
 @import "variables";
 @import "mobile";
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,600,400);
+
+
+html {
+	background-color: $lightGrey;
+	font-family: 'Open Sans', "Helvetica Neue", Helvetica, "Segoe Ui", Arial, sans-serif;
+}
+
 // Header
 
 .header {
+	width: 100%;
+	height: $header-height;
+	position: absolute;
+	border-bottom: 1px solid $darkGrey*4;
+	background-color: $lightGrey;
+}
+
+.headerContainer {
 	width: $width;
-	height: 200px;
+	height: $header_height;
 	margin: 0 auto;
-	background-color: black;
+	background-color: $lightGrey;
 
 	ul {
 		width: $width;
-		padding: 0 100px;
 
 		li {
-			height: 200px;
-			line-height: 200px;
+			height: $header_height;
+			line-height: $header_height;
 			display: inline-block;
+			width: $width/5-5px;
+			position: relative;
+			top: -65px;
 
 			a {
-				color: white;
+				color: $darkBrown;
 				text-decoration: none;
+				text-align: center;
+				display: block;
+				font-weight: 300;
+				letter-spacing: 4px;
+				text-transform: uppercase;
+				font-size: 0.8em;
+				@include transition(color 0.2s);
+
+				&:hover {
+					font-size: 0.9em;
+					color: $purple;
+				}
+			}
+
+			&:nth-child(3) {
+				width: $width/5-7px;
+				left: 1px;
+				position: relative;
+				top: $header_height/4;
+				background-color: $lightGrey;
+
+				a {
+
+					svg {
+						fill: $darkBrown;
+						@include transition(0.2s);
+
+						&:hover {
+							fill: $purple;
+							@include transform(scale(1.1));
+						}
+					}
+				}
+
+				&:after {
+					height: $header_height/2;
+					width: $width/5-7px;
+					border-right: 1px solid $darkGrey*4;
+					border-bottom: 1px solid $darkGrey*4;
+					border-left: 1px solid $darkGrey*4;
+					content: "";
+					position: absolute;
+					left: -1px;
+					top: ($header_height -$header_height/4);
+					@include box-shadow($headerShadow);
+					background-color: $lightGrey;
+					z-index: -1;
+				}
 			}
 		}
 	}
+}
+
+// Cover
+
+.cover {
+	background-image: url("../images/cover.jpg");
+	background-size: cover;
+	height: 400px;
+	z-index: -2;
+	top: $header_height;
+	position: relative;
+	border-bottom: 1px solid $darkGrey*4;
+	@include box-shadow(inset $headerShadow);
+}
+
+// Content
+
+.content {
+	width: $width;
+	margin: 30px auto 0;
+	position: relative;
+	top: $header_height;
+}
+
+// Footer
+
+footer {
+	position: relative;
+	background-color: $darkBrown;
+	top: $header_height+100px;
+	height: 300px;
+	width: 100%;
+	color: $lightGrey;
 }
