@@ -1,2 +1,29 @@
 @import "compass/reset";
 @import "compass";
+@import "variables";
+@import "mobile";
+
+// Header
+
+.header {
+	width: $width;
+	height: 200px;
+	margin: 0 auto;
+	background-color: black;
+
+	ul {
+		width: $width;
+		padding: 0 100px;
+
+		li {
+			height: 200px;
+			line-height: 200px;
+			display: inline-block;
+
+			a {
+				color: white;
+				text-decoration: none;
+			}
+		}
+	}
+}
