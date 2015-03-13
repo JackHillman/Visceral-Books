@@ -142,12 +142,6 @@ h5 {
 	margin: $header_height+100px auto 0;
 	position: relative;
 
-	// &:after {
-	// 	content: "We are reading.";
-	// 	font-weight: 700;
-	// 	line-height: 1.8em;
-	// }
-
 	& span {
 		font-style: italic;
 	}
@@ -242,7 +236,7 @@ footer {
 				@include transition(0.1s);
 
 				&:hover {
-					color: $lightBrown*2;
+					color: $lightBrown*3;
 				}
 			}
 
