@@ -3,12 +3,17 @@
 @import "variables";
 @import "mobile";
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,600,400);
-
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,600,400,300italic);
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic);
 
 html {
 	background-color: $lightGrey;
 	font-family: 'Open Sans', "Helvetica Neue", Helvetica, "Segoe Ui", Arial, sans-serif;
+	color: $darkGrey;
+}
+
+body {
+	overflow-x: hidden;
 }
 
 // Header
@@ -36,7 +41,7 @@ html {
 			display: inline-block;
 			width: $width/5-5px;
 			position: relative;
-			top: -65px;
+			top: -30px;
 
 			a {
 				color: $darkBrown;
@@ -58,8 +63,8 @@ html {
 			&:nth-child(3) {
 				width: $width/5-7px;
 				left: 1px;
+				top: 10px;
 				position: relative;
-				top: $header_height/4;
 				background-color: $lightGrey;
 
 				a {
@@ -73,21 +78,6 @@ html {
 							@include transform(scale(1.1));
 						}
 					}
-				}
-
-				&:after {
-					height: $header_height/2;
-					width: $width/5-7px;
-					border-right: 1px solid $darkGrey*4;
-					border-bottom: 1px solid $darkGrey*4;
-					border-left: 1px solid $darkGrey*4;
-					content: "";
-					position: absolute;
-					left: -1px;
-					top: ($header_height -$header_height/4);
-					@include box-shadow($headerShadow);
-					background-color: $lightGrey;
-					z-index: -1;
 				}
 			}
 		}
@@ -105,6 +95,63 @@ html {
 	position: relative;
 	border-bottom: 1px solid $darkGrey*4;
 	@include box-shadow(inset $headerShadow);
+
+	.box {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+		background-color: rgba($darkBrown, 0.6);
+		box-sizing: border-box;
+
+		p {
+			line-height: 400px;
+			text-align: center;
+			font-size: 4em;
+			font-family: "Playfair Display";
+			font-weight: 900;
+			color: white;
+			position: relative;
+			@include text-shadow(1px 2px 0 $darkBrown);
+
+			&:before, &:after {
+				content: "";
+				position: absolute;
+				height: 10px;
+				border-top: 1px solid white;
+				border-bottom: 1px solid white;
+				width: 20vw;
+				top: 200px;
+				margin-left: -21vw;
+			}
+
+			&:after {
+				margin-left: 1vw;
+			}
+		}
+	}
+}
+
+h5 {
+	line-height: 1.3em;
+	font-size: 4em;
+	font-family: "Playfair Display";
+	font-weight: 400;
+	width: 90%;
+	letter-spacing: 5px;
+	text-align: center;
+	margin: $header_height+100px auto 0;
+	position: relative;
+
+	// &:after {
+	// 	content: "We are reading.";
+	// 	font-weight: 700;
+	// 	line-height: 1.8em;
+	// }
+
+	& span {
+		font-style: italic;
+	}
+
 }
 
 // Content
@@ -114,6 +161,58 @@ html {
 	margin: 30px auto 0;
 	position: relative;
 	top: $header_height;
+
+	h1 {
+		font-size: 3em;
+		font-weight: 300;
+		padding: 40px 10px 30px;
+		letter-spacing: 0.1em;
+	}
+
+	p {
+		font-size: 0.9em;
+		font-weight: 400;
+		padding: 0 0 10px;
+		line-height: 1.4em;
+	}
+
+	.leftText {
+		float: left;
+	}
+
+	.rightText {
+		float: right;
+	}
+
+	.leftText, .rightText {
+		padding: 0 20px 20px;
+		width: $width/1.6;
+		clear: both;
+		text-align: justify;
+	}
+
+	.image {
+		width: 250px;
+		height: 250px;
+		margin: 40px 20px 20px;
+		position: relative;
+		@include border-radius(9999px);
+	}
+
+	.left {
+		float: left;
+		clear: left;
+	}
+
+	.right {
+		float: right;
+		clear: right;
+	}
+
+	.placeholder {
+		background-color: $lightGrey;
+		border: 1px solid $darkBrown;
+	}
 }
 
 // Footer
@@ -125,4 +224,49 @@ footer {
 	height: 300px;
 	width: 100%;
 	color: $lightGrey;
+	clear: both;
+
+	ul {
+		width: 48%;
+		height: 190px;
+		padding: 55px 0;
+
+		li {
+			line-height: 25px;
+			font-size: 15px;
+
+			a {
+				color: $lightBrown*1.5;
+				text-decoration: none;
+				font-weight: 600;
+				@include transition(0.1s);
+
+				&:hover {
+					color: $lightBrown*2;
+				}
+			}
+
+			&:nth-child(4) {
+				padding: 0 0 15px;
+			}
+		}
+	}
+
+	.footerLeft {
+		float: left;
+
+		li {
+			text-align: right;
+		}
+	}
+
+	.footerRight {
+		float: right;
+
+		li {
+			text-align: left;
+			color: $lightBrown*1.3;
+			font-style: italic;
+		}
+	}
 }
